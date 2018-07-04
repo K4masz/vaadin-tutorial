@@ -1,4 +1,4 @@
-package my.vaadin.app;
+package my.vaadin.app.model.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -11,15 +11,10 @@ import java.time.LocalDate;
 public class Customer implements Serializable, Cloneable {
 
     private Long id;
-
     private String firstName = "";
-
     private String lastName = "";
-
     private LocalDate birthDate;
-
     private CustomerStatus status;
-
     private String email = "";
 
     public Long getId() {

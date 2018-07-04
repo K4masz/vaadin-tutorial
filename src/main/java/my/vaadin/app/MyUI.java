@@ -10,6 +10,9 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import my.vaadin.app.model.domain.Customer;
+import my.vaadin.app.model.services.CustomerService;
+import my.vaadin.app.view.CustomerForm;
 
 import java.util.List;
 

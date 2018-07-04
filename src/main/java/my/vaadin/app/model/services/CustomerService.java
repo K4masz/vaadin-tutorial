@@ -1,4 +1,7 @@
-package my.vaadin.app;
+package my.vaadin.app.model.services;
+
+import my.vaadin.app.model.domain.CustomerStatus;
+import my.vaadin.app.model.domain.Customer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,7 +45,7 @@ public class CustomerService {
     /**
      * @return all available CUSTOMER objects.
      */
-    public synchronized List<Customer> findAll() {
+    private synchronized List<Customer> findAll() {
         return findAll(null);
     }
 
@@ -66,13 +69,7 @@ public class CustomerService {
                 Logger.getLogger(CustomerService.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        Collections.sort(arrayList, new Comparator<Customer>() {
-
-            @Override
-            public int compare(Customer o1, Customer o2) {
-                return (int) (o2.getId() - o1.getId());
-            }
-        });
+        Collections.sort(arrayList, (o1, o2) -> (int) (o2.getId() - o1.getId()));
         return arrayList;
     }
 
@@ -98,13 +95,7 @@ public class CustomerService {
                 Logger.getLogger(CustomerService.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        Collections.sort(arrayList, new Comparator<Customer>() {
-
-            @Override
-            public int compare(Customer o1, Customer o2) {
-                return (int) (o2.getId() - o1.getId());
-            }
-        });
+        Collections.sort(arrayList, (o1, o2) -> (int) (o2.getId() - o1.getId()));
         int end = start + maxresults;
         if (end > arrayList.size()) {
             end = arrayList.size();
@@ -154,7 +145,7 @@ public class CustomerService {
     /**
      * Sample data generation
      */
-    public void ensureTestData() {
+    private void ensureTestData() {
         if (findAll().isEmpty()) {
             final String[] names = new String[]{"Gabrielle Patel", "Brian Robinson", "Eduardo Haugen",
                     "Koen Johansen", "Alejandro Macdonald", "Angel Karlsson", "Yahir Gustavsson", "Haiden Svensson",

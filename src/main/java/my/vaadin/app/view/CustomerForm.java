@@ -1,10 +1,13 @@
-package my.vaadin.app;
+package my.vaadin.app.view;
 
 import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import javafx.scene.input.KeyCode;
+import my.vaadin.app.MyUI;
+import my.vaadin.app.model.domain.Customer;
+import my.vaadin.app.model.domain.CustomerStatus;
+import my.vaadin.app.model.services.CustomerService;
 
 public class CustomerForm extends FormLayout {
 
