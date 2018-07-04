@@ -1,4 +1,4 @@
-package my.vaadin;
+package my.vaadin.app;
 
 import javax.servlet.annotation.WebServlet;
 
