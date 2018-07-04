@@ -47,14 +47,31 @@ public class MyUI extends UI {
         filtering.addComponents(filterText, clearFilterTextBtn);
         filtering.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
 
+        Button addCustomerBtn = new Button("Add new Customer");
+        addCustomerBtn.addClickListener(e -> {
+            grid.asSingleSelect().clear();
+            form.setCustomer(new Customer());
+        });
+
+        HorizontalLayout toolbar = new HorizontalLayout(filtering, addCustomerBtn);
+
+        grid.setColumns("firstName", "lastName", "email");
+
         HorizontalLayout main = new HorizontalLayout(grid, form);
         main.setSizeFull();
         grid.setSizeFull();
         main.setExpandRatio(grid, 1);
 
-        layout.addComponents(filtering, main);
-
         setContent(layout);
+
+        form.setVisible(false);
+
+        layout.addComponents(toolbar, main);
+
+        grid.asSingleSelect().addValueChangeListener(event -> {
+            if (event.getValue() == null) form.setVisible(false);
+            else form.setCustomer(event.getValue());
+        });
     }
 
     public void updateList() {
